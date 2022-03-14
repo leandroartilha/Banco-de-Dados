@@ -7916,7 +7916,10 @@ SELECT productVendor FROM products;
 SELECT quantityInStock FROM products;
 SELECT productVendor FROM products where (buyPrice > 70) AND (quantityInStock >4000) ;
 SELECT productName FROM products where (productVendor LIKE 'Welly Diecast Productions');
-SELECT productName FROM products where (productVendor LIKE 'Welly Diecast Productions') AND (MSRP > 60);
+
+SELECT productName FROM products where (productVendor LIKE 'Welly Diecast Productions') AND (MSRP > 60);///
+
+
 SELECT MSRP FROM products;
 SELECT lastName, firstName FROM employees WHERE officeCode IN (SELECT officeCode FROM offices WHERE country = 'USA');
 SELECT lastName, firstName FROM employees WHERE officeCode IN (SELECT officeCode FROM offices WHERE country = 'USA');
@@ -7925,6 +7928,23 @@ SELECT customerNumber, checkNumber, amount FROM payments WHERE amount = (SELECT 
 SELECT status, COUNT(*) FROM orders GROUP BY status;
 SELECT status from orders GROUP BY status;
 
+SELECT customerNumber, checkNumber, amount FROM payments
+WHERE amount = (SELECT MAX(amount) FROM payments);
+
+SELECT buyPrice, productName FROM products
+WHERE buyPrice = (SELECT MAX(buyPrice) FROM products);////////////
+
+SELECT productCode, productName, textDescription FROM
+products t1 INNER JOIN productlines t2
+ON t1.productLine = t2.productLine;
+
+SELECT A.city, B.city, A.customerName FROM
+customers A INNER JOIN offices B
+ON A.city = B.city;////////
+
+SELECT territory FROM offices;
+SELECT territory FROM offices
+GROUP BY territory;//////
 
 
 
