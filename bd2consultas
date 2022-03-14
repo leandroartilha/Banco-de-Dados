@@ -7946,6 +7946,15 @@ SELECT territory FROM offices;
 SELECT territory FROM offices
 GROUP BY territory;//////
 
+SELECT customers.customerNumber,customerName,orderNumber, status
+FROM customers
+LEFT JOIN orders ON
+orders.customerNumber = customers.customerNumber;
+
+SELECT A.officeCode, B.officeCode, B.firstName, A.country
+FROM offices A LEFT JOIN employees B
+ON A.officeCode = B.officeCode;/////
+
 
 
 
