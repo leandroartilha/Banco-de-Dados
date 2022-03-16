@@ -7917,6 +7917,8 @@ SELECT quantityInStock FROM products;
 SELECT productVendor FROM products where (buyPrice > 70) AND (quantityInStock >4000) ;
 SELECT productName FROM products where (productVendor LIKE 'Welly Diecast Productions');
 
+/*Mostrar o nome do produto que tenha
+como vendedor o Welly Diecast Productions e o valor estipulado pelo fabricante seja maior do que 60*/
 SELECT productName FROM products where (productVendor LIKE 'Welly Diecast Productions') AND (MSRP > 60);///
 
 
@@ -7931,30 +7933,35 @@ SELECT status from orders GROUP BY status;
 SELECT customerNumber, checkNumber, amount FROM payments
 WHERE amount = (SELECT MAX(amount) FROM payments);
 
+/*Mostrar o nome e o maior preço de compra da tabela produtos*/
 SELECT buyPrice, productName FROM products
 WHERE buyPrice = (SELECT MAX(buyPrice) FROM products);////////////
+
+SELECT buyPrice, productName from products;
 
 SELECT productCode, productName, textDescription FROM
 products t1 INNER JOIN productlines t2
 ON t1.productLine = t2.productLine;
 
-SELECT A.city, B.city, A.customerName FROM
+/*Mostrar as cidades correspondente com a cidade do cliente*/
+SELECT DISTINCT A.city, B.city, A.customerName FROM
 customers A INNER JOIN offices B
-ON A.city = B.city;////////
+ON A.city = B.city;
 
 SELECT territory FROM offices;
+/*Consulta simples mostrando os tipos de território*/
 SELECT territory FROM offices
-GROUP BY territory;//////
+GROUP BY territory;
 
 SELECT customers.customerNumber,customerName,orderNumber, status
 FROM customers
 LEFT JOIN orders ON
 orders.customerNumber = customers.customerNumber;
 
-SELECT A.officeCode, B.officeCode, B.firstName, A.country
+/*Mostrar os código dos escritórios com primeiro nome do funcionário correspondente e o país*/
+SELECT A.officeCode as 'Codigo Escritorio',B.firstName, A.country
 FROM offices A LEFT JOIN employees B
-ON A.officeCode = B.officeCode;/////
-
+ON A.officeCode = B.officeCode;
 
 
 
